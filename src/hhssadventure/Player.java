@@ -13,7 +13,8 @@ public class Player {
     private location locat;
     private Player(){
         this.locat = ;
-        this.direction = 
+        this.direction = 1;
+        
     }
     public void moveFor(location loc){
         
