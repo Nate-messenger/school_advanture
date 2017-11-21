@@ -11,8 +11,8 @@ package hhssadventure;
 public class Player {
     private int direction;
     private location locat;
-    private Player(){
-        this.locat = ;
+    private Player(location[] places){
+        this.locat = places [9] ;
         this.direction = 1;
         
     }
@@ -21,7 +21,8 @@ public class Player {
     }
     
     public void turnAround(location loc){
-        
+     turnLeft();
+     turnLeft();
     }
     
     public void turnLeft(){
