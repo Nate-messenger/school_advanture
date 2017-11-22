@@ -27,7 +27,7 @@ public class location {
     private boolean EastMove;
     private boolean SouthMove;
     private boolean WestMove;
-    
+
     public String next;
 
     public location(String place) {
@@ -38,9 +38,9 @@ public class location {
         //N E S W
         this.North = north;
         this.NorthP = picture;
-        if (move == "true") {
+        if (move.equals("true")) {
             NorthMove = true;
-        }else{
+        } else {
             NorthMove = false;
         }
     }
@@ -49,63 +49,66 @@ public class location {
         //N E S W
         this.East = north;
         this.EastP = picture;
-        if (move == "true") {
+        if (move.equals("true")) {
             EastMove = true;
-        }else{
+        } else {
             EastMove = false;
         }
     }
 
-    public void setSouth(String north, String picture ,String move) {
+    public void setSouth(String north, String picture, String move) {
         //N E S W
         this.South = north;
         this.SouthP = picture;
-        if (move == "true") {
+        if (move.equals("true")) {
             SouthMove = true;
-        }else{
+        } else {
             SouthMove = false;
         }
     }
 
-    public void setWest(String north, String picture ,String move) {
+    public void setWest(String north, String picture, String move) {
         //N E S W
         this.West = north;
         this.WestP = picture;
-        if (move == "true") {
+        if (move.equals("true")) {
             WestMove = true;
-        }else{
+        } else {
             WestMove = false;
         }
-        
+
     }
-    
-    public boolean isClear(int direction){
-              if (direction  == 0) {
-                  if (NorthMove) {
-                      return true;
-                  }else{
-                      return false;
-                  }
-            }else if (direction == 1) {
-                  if (EastMove) {
-                      return true;
-                  }else{
-                      return false;
-                  }
-        } else if (direction == 2) {
-            if (SouthMove) {
-                      return true;
-                  }else{
-                      return false;
-                  }
-        }else if (direction == 3) {
-            if (WestMove) {
-                      return true;
-                  }else{
-                      return false;
-                  }
+
+    public boolean isClear(int direction) {
+        if (direction == 0) {
+            if (NorthMove) {
+                return true;
+            } else {
+                return false;
+            }
         }
-              return false;
+        if (direction == 1) {
+            if (EastMove) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (direction == 2) {
+            if (SouthMove) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (direction == 3) {
+            if (WestMove) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     public String getNorth() {
@@ -131,11 +134,10 @@ public class location {
     @Override
     public String toString() {
         String format = this.place + "\n";
-        format += "Img: " + this.North + " " + this.NorthP + "\n";
-        format += "Img: " + this.East + " " + this.EastP + "\n";
-        format += "Img: " + this.South + " " + this.SouthP + "\n";
-        format += "Img: " + this.West + " " + this.WestP + "\n";
-        
+        format += "Img: " + this.North + " " + this.NorthP + " " + isClear(0) + "\n";
+        format += "Img: " + this.East + " " + this.EastP + " " + isClear(1) + "\n";
+        format += "Img: " + this.South + " " + this.SouthP + " " + isClear(2) + "\n";
+        format += "Img: " + this.West + " " + this.WestP + " " + isClear(3) + "\n";
 
         return format;
     }
