@@ -20,7 +20,7 @@ public class Player {
     }
     public void moveFor(location loc){
         if (canMove()) {
-            //locat = locat.getNext(direction);
+            locat = locat.getNext(direction);
         }
     }
     
