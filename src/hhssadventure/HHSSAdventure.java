@@ -14,6 +14,8 @@ import java.util.Scanner;
  */
 public class HHSSAdventure {
 
+    private location[] places;
+
     /**
      * @param args the command line arguments
      */
@@ -33,23 +35,23 @@ public class HHSSAdventure {
         }
 
         Scanner in = new Scanner(file);
-        
+
         int locNum = in.nextInt();
         location[] places = new location[locNum];
-        
+
         for (int i = 0; i < places.length; i++) {
             in.nextLine();
             location l = new location(in.next());
-            l.setNorth(in.next(), in.next() , in.next());
-            if((l.isClear(0))==true){
-                l.setNext(in.next(),0,in.next());
+            l.setNorth(in.next(), in.next(), in.next());
+            if ((l.isClear(0)) == true) {
+                l.setNext(in.next(), 0, in.next());
             }
             in.nextLine();
-            l.setEast(in.next(), in.next() ,in.next());
+            l.setEast(in.next(), in.next(), in.next());
             in.nextLine();
-             l.setSouth(in.next(), in.next(), in.next());
+            l.setSouth(in.next(), in.next(), in.next());
             in.nextLine();
-            l.setWest(in.next(), in.next(),in.next());
+            l.setWest(in.next(), in.next(), in.next());
             places[i] = l;
         }
         for (int i = 0; i < places.length; i++) {
@@ -58,5 +60,59 @@ public class HHSSAdventure {
         for (int i = 0; i < places.length; i++) {
             System.out.println(places[i]);
         }
+    }
+
+    public HHSSAdventure() {
+        FileReader file = null;
+        try {
+            URL url = HHSSAdventure.class.getResource("pics.txt");
+            System.out.println(url);
+            //file reader
+            file = new FileReader(url.getFile());
+        } catch (Exception e) {
+            //handle any errors
+            //print out the red error message 
+            e.printStackTrace();
+//            exits out the program
+            System.exit(0);
+        }
+
+        Scanner in = new Scanner(file);
+
+        int locNum = in.nextInt();
+        location[] places = new location[locNum];
+
+        for (int i = 0; i < places.length; i++) {
+            in.nextLine();
+            location l = new location(in.next());
+            l.setNorth(in.next(), in.next(), in.next());
+            if ((l.isClear(0)) == true) {
+                l.setNext(in.next(), 0, in.next());
+            }
+            in.nextLine();
+            l.setEast(in.next(), in.next(), in.next());
+            if ((l.isClear(1)) == true) {
+                l.setNext(in.next(), 1, in.next());
+            }
+            in.nextLine();
+            l.setSouth(in.next(), in.next(), in.next());
+            if ((l.isClear(2)) == true) {
+                l.setNext(in.next(), 2, in.next());
+            }
+            in.nextLine();
+            l.setWest(in.next(), in.next(), in.next());
+            if ((l.isClear(3)) == true) {
+                l.setNext(in.next(), 3, in.next());
+            }
+            places[i] = l;
+        }
+        for (int i = 0; i < places.length; i++) {
+            places[i].setArray(places);
+        }
+        this.places = places;
+    }
+
+    public location[] getPlaces() {
+        return this.places;
     }
 }

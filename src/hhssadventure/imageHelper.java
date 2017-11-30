@@ -9,6 +9,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class imageHelper {
+
     public static BufferedImage loadImage(String name) {
         BufferedImage img = null;
         try {
