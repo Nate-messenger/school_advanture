@@ -19,10 +19,10 @@ public class location {
     private String EastP;
     private String SouthP;
     private String WestP;
-    private boolean NorthMove;
-    private boolean EastMove;
-    private boolean SouthMove;
-    private boolean WestMove;
+    private boolean NorthMove = false;
+    private boolean EastMove = false;
+    private boolean SouthMove = false;
+    private boolean WestMove = false;
     private String NorthNext;
     private String SouthNext;
     private String EastNext;
@@ -87,6 +87,12 @@ public class location {
         array = meme;
     }
 
+    /**
+     * *
+     *
+     * @param direction the direction the player is facing
+     * @return if it is clear
+     */
     public boolean isClear(int direction) {
         if (direction == 0) {
             if (NorthMove) {
@@ -115,6 +121,7 @@ public class location {
         }
         return false;
     }
+    //getters
 
     public String getNorth() {
         return NorthP;
@@ -136,28 +143,34 @@ public class location {
         return this.place;
     }
 
+    /**
+     * *
+     *
+     * @param dir the way it is facing
+     * @return the location that it will move to
+     */
     public location getNext(int dir) {
         if (dir == 0 && NorthMove) {
             for (int i = 0; i < array.length; i++) {
-                if ((NorthNext.compareTo(array[i].place)) == 0) {
+                if ((NorthNext.equals(array[i].place))) {
                     return array[i];
                 }
             }
         } else if (dir == 1 && EastMove) {
             for (int i = 0; i < array.length; i++) {
-                if ((EastNext.compareTo(array[i].place)) == 0) {
+                if ((EastNext.equals(array[i].place))) {
                     return array[i];
                 }
             }
         } else if (dir == 2 && SouthMove) {
             for (int i = 0; i < array.length; i++) {
-                if ((WestNext.compareTo(array[i].place)) == 0) {
+                if ((SouthNext.equals(array[i].place))) {
                     return array[i];
                 }
             }
         } else if (dir == 3 && WestMove) {
             for (int i = 0; i < array.length; i++) {
-                if ((SouthNext.compareTo(array[i].place)) == 0) {
+                if ((WestNext.equals(array[i].place))) {
                     return array[i];
                 }
             }
