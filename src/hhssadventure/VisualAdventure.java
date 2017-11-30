@@ -153,8 +153,7 @@ public class VisualAdventure extends javax.swing.JFrame {
     }
 
     public void updatePic() {
-        if (meme.getDir() == 0) {
-            System.out.println(meme.getLoc());
+        if (meme.getDir() == 0) {      
             picture.setImage(imageHelper.loadImage("src//hhssadventure//" + meme.getLoc().getNorth()));
             meme.getLoc().getNorth();
         } else if (meme.getDir() == 1) {
