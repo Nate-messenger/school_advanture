@@ -16,6 +16,7 @@ public class VisualAdventure extends javax.swing.JFrame {
 
     private HHSSAdventure controller;
     private Player meme;
+    private location loc;
 
     /**
      * Creates new form VisualAdventure
@@ -43,6 +44,7 @@ public class VisualAdventure extends javax.swing.JFrame {
         turn = new javax.swing.JButton();
         right = new javax.swing.JButton();
         picture = new hhssadventure.Jimage();
+        place = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +76,8 @@ public class VisualAdventure extends javax.swing.JFrame {
             }
         });
 
+        place.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,13 +98,19 @@ public class VisualAdventure extends javax.swing.JFrame {
                         .addComponent(right, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(place, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                .addGap(80, 80, 80)
+                .addGap(29, 29, 29)
+                .addComponent(place, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(forward, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(left, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,6 +163,7 @@ public class VisualAdventure extends javax.swing.JFrame {
     }
 
     public void updatePic() {
+        place.setText(meme.getLoc().getPlace());
         if (meme.getDir() == 0) {      
             picture.setImage(imageHelper.loadImage("src//hhssadventure//" + meme.getLoc().getNorth()));
             meme.getLoc().getNorth();
@@ -206,6 +217,7 @@ public class VisualAdventure extends javax.swing.JFrame {
     private javax.swing.JButton forward;
     private javax.swing.JButton left;
     private hhssadventure.Jimage picture;
+    private javax.swing.JLabel place;
     private javax.swing.JButton right;
     private javax.swing.JButton turn;
     // End of variables declaration//GEN-END:variables
